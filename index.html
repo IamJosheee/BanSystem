@@ -693,34 +693,41 @@ header h1 {
         right: 10px;
     }
 
-    /* ===== ESTILOS PARA STAGES EN MÓVIL ===== */
+    /* ===== ESTILOS PARA STAGES EN MÓVIL (MÁS COMPACTOS) ===== */
     #stages {
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        gap: 8px;
         padding: 8px;
-        max-width: 100%;
+        max-width: 500px; /* <--- LIMITA EL ANCHO */
+        margin: 0 auto;
     }
 
     .stage {
         min-height: auto;
         min-width: auto;
         width: 100%;
-        max-width: 100%; /* <--- NUEVO */
+        max-width: 180px; /* <--- TAMAÑO MÁXIMO */
+        justify-self: center; /* <--- CENTRA CADA STAGE */
+        border-radius: 6px;
     }
 
     .stage img {
-        height: 70px;
+        height: 60px; /* <--- MÁS PEQUEÑO */
+        border-radius: 4px 4px 0 0;
     }
 
     .stage p {
-        font-size: 0.6rem;
-        padding: 4px 2px;
-        min-height: 24px;
+        font-size: 0.55rem; /* <--- MÁS PEQUEÑO */
+        padding: 4px 3px;
+        min-height: 20px;
+        line-height: 1.1;
     }
 
     .stage-type {
-        font-size: 0.45rem;
-        padding: 2px 2px 4px;
+        font-size: 0.4rem;
+        padding: 2px 2px 5px;
+        letter-spacing: 0.3px;
     }
 
     .button-group {
@@ -737,26 +744,30 @@ header h1 {
 @media (max-width: 480px) {
     #stages {
         grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-        padding: 6px;
+        gap: 6px;
+        padding: 5px;
+        max-width: 350px; /* <--- AÚN MÁS ESTRECHO */
+    }
+
+    .stage {
+        max-width: 150px; /* <--- MÁS PEQUEÑO */
     }
 
     .stage img {
-        height: 60px;
+        height: 50px;
     }
 
     .stage p {
-        font-size: 0.55rem;
+        font-size: 0.5rem;
         padding: 3px 2px;
-        min-height: 20px;
+        min-height: 16px;
     }
 
     .stage-type {
-        font-size: 0.4rem;
-        padding: 2px 2px 4px;
+        font-size: 0.35rem;
+        padding: 1px 2px 4px;
     }
 }
-        }
     </style>
 </head>
 <body>
