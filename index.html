@@ -15,21 +15,33 @@
 
 /* ===== SOLUCIÓN PARA SAFARI ===== */
 html {
-    background-color: #0a0a0a;
+    background: #0a0a0a;
     min-height: 100%;
     min-height: -webkit-fill-available;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #0a0a0a, #161616);
-    background-attachment: fixed;
     color: #ffffff;
     min-height: 100vh;
     min-height: -webkit-fill-available;
     margin: 0;
     padding: 0;
     -webkit-overflow-scrolling: touch;
+    background: transparent;
+    position: relative;
+}
+
+/* Fondo gradiente como pseudo-elemento */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #0a0a0a, #161616);
+    z-index: -1;
 }
 
 /* ===== CONTENEDOR PRINCIPAL ===== */
