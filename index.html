@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navson Smash</title>
+    <style>
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===== BODY ===== */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a, #161616);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* ===== CONTENEDOR PRINCIPAL ===== */
+        .container {
+            width: 95%;
+            max-width: 1800px;
+            margin: auto;
+            padding: 30px 0;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+            header h1 {
+                font-size: 2.5rem;
+                color: #ffffff;
+                margin-bottom: 5px;
+                text-transform: uppercase;
+                letter-spacing: 5px;
+                font-weight: 400;
+            }
+
+        /* ===== SECCIONES ===== */
+        .section {
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+        }
+
+            .section h2 {
+                margin-bottom: 15px;
+                color: #ffffff;
+                border-bottom: 2px solid #4a4a4a;
+                padding-bottom: 5px;
+                font-weight: 400;
+                letter-spacing: 2px;
+            }
+
+            .section h3 {
+                color: #e0e0e0;
+                margin-bottom: 15px;
+                font-weight: 400;
+                letter-spacing: 2px;
+                border-left: 3px solid #666;
+                padding-left: 10px;
+            }
+
+        /* ===== BOTONES ===== */
+        button {
+            background-color: #2a2a2a;
+            border: 1px solid #4a4a4a;
+            padding: 12px 24px;
+            border-radius: 6px;
+            color: #ffffff;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+        }
+
+            button:hover {
+                background-color: #3a3a3a;
+                border-color: #888;
+            }
+
+        .btn-success {
+            background-color: #2a2a2a;
+            border-color: #4a4a4a;
+        }
+
+            .btn-success:hover {
+                background-color: #3a3a3a;
+            }
+
+        .btn-danger {
+            background-color: #2a2a2a;
+            border-color: #5a5a5a;
+        }
+
+            .btn-danger:hover {
+                background-color: #3a3a3a;
+            }
+
+        .btn-warning {
+            background-color: #2a2a2a;
+            border-color: #6a6a6a;
+        }
+
+            .btn-warning:hover {
+                background-color: #3a3a3a;
+            }
+
+        .btn-reset-set {
+            background-color: #2a2a2a;
+            border: 2px solid #ff9800;
+            color: #ffffff;
+        }
+
+            .btn-reset-set:hover {
+                background-color: #3a3a3a;
+                border-color: #ffb74d;
+            }
+
+        /* ===== BOTÓN FIJO REINICIO ===== */
+        .fixed-reset {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+            .fixed-reset button {
+                background-color: #2a2a2a;
+                border-color: #666;
+                padding: 12px 24px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            }
+
+        /* ===== BOTÓN CONFIRMAR ===== */
+        .btn-confirm {
+            background-color: #2a2a2a;
+            border: 2px solid #4CAF50;
+            color: #ffffff;
+            padding: 10px 30px;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+            .btn-confirm:hover {
+                background-color: #3a3a3a;
+                border-color: #66BB6A;
+            }
+
+        /* ===== SECCIÓN PERSONAJES ===== */
+        .character-section {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .character-selector {
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            padding: 25px;
+            width: 800px;
+            flex: 1 1 600px;
+            max-width: 900px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+        }
+
+            .character-selector h3 {
+                color: #e0e0e0;
+                margin-bottom: 15px;
+                border-bottom: 2px solid #4a4a4a;
+                padding-bottom: 5px;
+                border-left: none;
+                padding-left: 0;
+            }
+
+        /* ===== SELECTOR PERSONALIZADO CON ICONOS ===== */
+        .custom-select-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .custom-select-button {
+            width: 100%;
+            padding: 15px 15px 15px 50px;
+            background-color: #0f0f0f;
+            border: 1px solid #4a4a4a;
+            color: #ffffff;
+            font-size: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            transition: 0.2s ease;
+        }
+
+            .custom-select-button:hover {
+                border-color: #888;
+                background-color: #1a1a1a;
+            }
+
+            .custom-select-button::after {
+                content: '▼';
+                position: absolute;
+                right: 15px;
+                color: #888;
+                font-size: 12px;
+            }
+
+            .custom-select-button.active::after {
+                content: '▲';
+            }
+
+        .custom-select-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .custom-select-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            max-height: 400px;
+            overflow-y: auto;
+            background-color: #1a1a1a;
+            border: 1px solid #4a4a4a;
+            border-radius: 6px;
+            margin-top: 5px;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+            .custom-select-dropdown.show {
+                display: block;
+            }
+
+        .custom-select-option {
+            padding: 12px 15px 12px 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            transition: 0.2s ease;
+            border-bottom: 1px solid #333;
+        }
+
+            .custom-select-option:last-child {
+                border-bottom: none;
+            }
+
+            .custom-select-option:hover {
+                background-color: #2a2a2a;
+            }
+
+            .custom-select-option.selected {
+                background-color: #2a2a2a;
+                border-left: 3px solid #4CAF50;
+            }
+
+            .custom-select-option img {
+                width: 24px;
+                height: 24px;
+                object-fit: contain;
+                position: absolute;
+                left: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .custom-select-option span {
+                color: #ffffff;
+                font-size: 0.9rem;
+            }
+
+        /* Scrollbar personalizada */
+        .custom-select-dropdown::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-select-dropdown::-webkit-scrollbar-track {
+            background: #0f0f0f;
+        }
+
+        .custom-select-dropdown::-webkit-scrollbar-thumb {
+            background: #666;
+            border-radius: 3px;
+        }
+
+            .custom-select-dropdown::-webkit-scrollbar-thumb:hover {
+                background: #888;
+            }
+
+        .selected-character-display {
+            background-color: #0f0f0f;
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            border-left: 4px solid #4CAF50;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #cccccc;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .selected-character-icon {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .selected-character-display span {
+            color: #4CAF50;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        /* ===== ESTILOS PARA STAGES ===== */
+        .stage-container {
+            width: 100%;
+            margin: 30px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #stages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        .stage {
+            background-color: #1f1f1f;
+            border-radius: 8px;
+            min-width: 220px;
+            width: 220px;
+            cursor: pointer;
+            transition: 0.2s ease;
+            overflow: hidden;
+            border: 1px solid #333;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+            .stage:hover {
+                transform: translateY(-3px);
+                background-color: #262626;
+                border-color: #888;
+            }
+
+            .stage img {
+                width: 100%;
+                height: 120px;
+                object-fit: cover;
+                filter: grayscale(50%);
+            }
+
+            .stage p {
+                padding: 12px;
+                font-weight: 500;
+                color: #ffffff;
+                border-bottom: 1px solid #333;
+                width: 100%;
+                text-align: center;
+            }
+
+        .stage-type {
+            padding: 0 12px 12px;
+            font-size: 0.7rem;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* ESTADOS DE STAGES - ROJO PARA BANEOS */
+        .banned {
+            opacity: 0.4;
+            border: 2px solid #ff4444;
+            filter: grayscale(80%);
+            background-color: #2a1a1a;
+        }
+
+            .banned:hover {
+                transform: none;
+                border-color: #ff6666;
+            }
+
+        /* ESTILO PARA SELECCIÓN TEMPORAL EN FASE DE BANEO - ROJO */
+        .stage.temp-selected.ban-phase {
+            opacity: 0.9;
+            border: 3px solid #ff4444;
+            filter: grayscale(20%);
+            background-color: #3a1a1a;
+            box-shadow: 0 0 20px rgba(255, 68, 68, 0.4);
+        }
+
+            .stage.temp-selected.ban-phase:hover {
+                opacity: 1;
+                border-color: #ff6666;
+                background-color: #4a2a2a;
+            }
+
+            .stage.temp-selected.ban-phase p {
+                color: #ffffff;
+                font-weight: 600;
+            }
+
+            .stage.temp-selected.ban-phase .stage-type {
+                color: #cccccc;
+            }
+
+        /* ESTILO PARA SELECCIÓN TEMPORAL EN FASE DE SELECCIÓN - VERDE */
+        .stage.temp-selected.pick-phase {
+            opacity: 0.9;
+            border: 3px solid #4CAF50;
+            filter: grayscale(20%);
+            background-color: #1a3a1a;
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.4);
+        }
+
+            .stage.temp-selected.pick-phase:hover {
+                opacity: 1;
+                border-color: #66BB6A;
+                background-color: #2a4a2a;
+            }
+
+            .stage.temp-selected.pick-phase p {
+                color: #ffffff;
+                font-weight: 600;
+            }
+
+            .stage.temp-selected.pick-phase .stage-type {
+                color: #cccccc;
+            }
+
+        /* ESTILO PARA STAGE SELECCIONADO (JUEGO) - VERDE */
+        .stage.selected {
+            border: 2px solid #4CAF50;
+            background-color: #1a3a1a;
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.3);
+        }
+
+            .stage.selected p {
+                color: #ffffff;
+                font-weight: 600;
+            }
+
+            .stage.selected .stage-type {
+                color: #cccccc;
+            }
+
+        .starter-stage {
+            border-left: 4px solid #888;
+        }
+
+        .counterpick-stage {
+            border-left: 4px solid #aaa;
+        }
+
+        .confirm-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0 10px;
+        }
+
+        /* ===== SCOREBOARD CENTRADO ===== */
+        .score-container {
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .player-score {
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .player-score h3 {
+                color: #cccccc;
+                margin-bottom: 5px;
+                font-size: 1rem;
+                border-bottom: none;
+                padding-bottom: 0;
+                border-left: none;
+                padding-left: 0;
+                letter-spacing: 2px;
+                text-align: center;
+                width: 100%;
+            }
+
+        .score {
+            font-size: 3rem;
+            font-weight: 300;
+            color: #ffffff;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .vs-divider {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #666;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        #status, .phase-indicator, .current-game, .winner-display {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 15px auto;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            border-left: 4px solid #4CAF50;
+        }
+
+        #status {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .phase-indicator {
+            color: #cccccc;
+            border-left-color: #aaa;
+        }
+
+        .winner-display {
+            border-left-color: #4CAF50;
+        }
+
+        .match-history {
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px auto;
+            max-width: 600px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+        }
+
+            .match-history h3 {
+                color: #e0e0e0;
+                border-bottom: 2px solid #4a4a4a;
+                padding-bottom: 5px;
+                margin-bottom: 15px;
+                border-left: none;
+                padding-left: 0;
+                font-weight: 400;
+                text-align: center;
+            }
+
+        .match-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 15px;
+            border-bottom: 1px solid #333;
+            color: #cccccc;
+        }
+
+            .match-item:last-child {
+                border-bottom: none;
+            }
+
+        .match-winner {
+            color: #4CAF50;
+            font-weight: 600;
+        }
+
+        .game-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+            .game-buttons button {
+                min-width: 160px;
+            }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+            .button-group button {
+                min-width: 200px;
+                padding: 14px 28px;
+                font-size: 0.9rem;
+            }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 98%;
+                padding: 15px 0;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+                letter-spacing: 3px;
+            }
+
+            .character-selector {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .score {
+                font-size: 2rem;
+            }
+
+            .vs-divider {
+                padding: 0 10px;
+            }
+
+            .fixed-reset {
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .stage {
+                min-width: 180px;
+                width: 180px;
+            }
+
+            .button-group {
+                gap: 15px;
+            }
+
+                .button-group button {
+                    min-width: 180px;
+                    padding: 12px 20px;
+                }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>NAVSON SMASH</h1>
+        </header>
+
+        <div class="fixed-reset">
+            <button onclick="resetAll()" class="btn-danger">REINICIAR</button>
+        </div>
+
+        <div id="characterSection">
+            <div class="character-section">
+                <!-- PLAYER 1 -->
+                <div class="character-selector">
+                    <h3>PLAYER 1</h3>
+
+                    <div class="custom-select-container" id="p1-select-container">
+                        <div class="custom-select-button" onclick="toggleDropdown(1)">
+                            <img id="p1-select-icon" class="custom-select-icon" src="" style="display: none;">
+                            <span id="p1-select-text">SELECCIONAR PERSONAJE</span>
+                        </div>
+                        <div class="custom-select-dropdown" id="p1-dropdown"></div>
+                    </div>
+
+                    <div class="selected-character-display">
+                        <img id="p1DisplayIcon" class="selected-character-icon" src="" alt="" style="display: none;">
+                        PERSONAJE: <span id="p1Name">NINGUNO</span>
+                    </div>
+                </div>
+
+                <!-- PLAYER 2 -->
+                <div class="character-selector">
+                    <h3>PLAYER 2</h3>
+
+                    <div class="custom-select-container" id="p2-select-container">
+                        <div class="custom-select-button" onclick="toggleDropdown(2)">
+                            <img id="p2-select-icon" class="custom-select-icon" src="" style="display: none;">
+                            <span id="p2-select-text">SELECCIONAR PERSONAJE</span>
+                        </div>
+                        <div class="custom-select-dropdown" id="p2-dropdown"></div>
+                    </div>
+
+                    <div class="selected-character-display">
+                        <img id="p2DisplayIcon" class="selected-character-icon" src="" alt="" style="display: none;">
+                        PERSONAJE: <span id="p2Name">NINGUNO</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button onclick="chooseRandomWinnerAndStart()" id="randomWinnerBtn">GANADOR ALEATORIO</button>
+                <button onclick="startBans()" id="startBansBtn" class="btn-success">INICIAR BANEOS</button>
+            </div>
+
+            <div id="winnerDisplay" class="winner-display hidden">
+                GANADOR: <span id="winnerName"></span>
+            </div>
+        </div>
+
+        <div id="gameSection" class="hidden">
+            <div class="score-container">
+                <div class="player-score">
+                    <h3 id="p1NameScore">PLAYER 1</h3>
+                    <div class="score" id="p1Score">0</div>
+                </div>
+                <div class="vs-divider">VS</div>
+                <div class="player-score">
+                    <h3 id="p2NameScore">PLAYER 2</h3>
+                    <div class="score" id="p2Score">0</div>
+                </div>
+            </div>
+
+            <div id="status">CARGANDO...</div>
+            <div id="phaseIndicator" class="phase-indicator"></div>
+
+            <div id="gameInfo" class="current-game" style="display: none;">
+                JUEGO <span id="gameNumber">1</span> · <span id="stageType">STARTERS</span>
+            </div>
+
+            <div id="stagesContainer" class="stage-container" style="display: none;">
+                <div id="stages"></div>
+                <div id="confirmBanContainer" class="confirm-container">
+                    <button onclick="confirmCurrentPhase()" class="btn-confirm">CONFIRMAR SELECCIÓN</button>
+                </div>
+            </div>
+
+            <div id="gameButtons" class="game-buttons" style="display: none;">
+                <button onclick="recordWin('Player 1')" class="btn-success">P1 GANA</button>
+                <button onclick="recordWin('Player 2')" class="btn-danger">P2 GANA</button>
+            </div>
+
+            <div id="nextGameControls" style="display: none;">
+                <div class="button-group" id="nextGameButtonGroup">
+                    <button onclick="nextGame()" class="btn-warning" id="nextGameBtn">SIGUIENTE JUEGO</button>
+                    <button onclick="resetSet()" class="btn-reset-set hidden" id="resetSetBtn">REINICIAR SET</button>
+                </div>
+            </div>
+
+            <div id="matchHistory" class="match-history" style="display: none;">
+                <h3>HISTORIAL</h3>
+                <div id="historyList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== LISTA DE PERSONAJES ====================
+        const smashUltimateRoster = [
+            "Mario", "Donkey Kong", "Link", "Samus", "Yoshi", "Kirby", "Fox", "Pikachu",
+            "Luigi", "Ness", "Captain Falcon", "Jigglypuff", "Peach", "Daisy", "Bowser",
+            "Ice Climbers", "Sheik", "Zelda", "Dr. Mario", "Pichu", "Falco", "Marth",
+            "Lucina", "Young Link", "Ganondorf", "Mewtwo", "Roy", "Chrom", "Mr. Game & Watch",
+            "Meta Knight", "Pit", "Dark Pit", "Dark Samus", "Zero Suit Samus", "Wario", "Snake", "Ike",
+            "Pokémon Trainer", "Diddy Kong", "Lucas", "Sonic", "King Dedede", "Olimar",
+            "Lucario", "R.O.B.", "Toon Link", "Wolf", "Villager", "Mega Man",
+            "Wii Fit Trainer", "Rosalina & Luma", "Little Mac", "Greninja",
+            "Mii Brawler", "Mii Swordfighter", "Mii Gunner",
+            "Palutena", "Pac-Man", "Robin", "Shulk",
+            "Bowser Jr.", "Duck Hunt", "Ryu", "Ken", "Cloud", "Corrin", "Bayonetta",
+            "Inkling", "Ridley", "Simon", "Richter", "King K. Rool", "Isabelle",
+            "Incineroar", "Piranha Plant", "Joker", "Hero", "Banjo & Kazooie", "Terry",
+            "Byleth", "Min Min", "Steve", "Sephiroth", "Pyra/Mythra", "Kazuya", "Sora"
+        ].sort();
+
+        // ==================== STAGES ====================
+        const starters = [
+            { name: "Battlefield", img: "https://www.ssbwiki.com/images/8/86/SSBU-Battlefield.png", type: "starter" },
+            { name: "Small Battlefield", img: "https://www.ssbwiki.com/images/7/7e/SSBU-Small-Battlefield.jpg?841ed", type: "starter" },
+            { name: "Town and City", img: "https://www.ssbwiki.com/images/2/26/SSBU-Town_and_City.png?b4ef4", type: "starter" },
+            { name: "Smashville", img: "https://www.ssbwiki.com/images/0/02/SSBU-Smashville.png?7a650", type: "starter" },
+            { name: "Pokemon Stadium 2", img: "https://www.ssbwiki.com/images/7/73/SSBU-Pokémon_Stadium_2.png?85dfe", type: "starter" }
+        ];
+
+        const counterpicksOnly = [
+            { name: "Kalos Pokemon League", img: "https://www.ssbwiki.com/images/b/bf/SSBU-Kalos_Pokémon_League.png?a56dd", type: "counterpick" },
+            { name: "Final Destination", img: "https://www.ssbwiki.com/images/9/91/SSBU-Final_Destination.jpg?98d65", type: "counterpick" },
+            { name: "Hollow Bastion", img: "https://www.ssbwiki.com/images/7/7e/SSBU-Hollow_Bastion.jpg?ea9b6", type: "counterpick" }
+        ];
+
+        const allStages = [...starters, ...counterpicksOnly];
+
+        // ==================== ICONOS ====================
+        let stockIcons = {
+            "Banjo & Kazooie": "icons/banjo_kazooie.png",
+            "Bayonetta": "icons/bayonetta.png",
+            "Bowser": "icons/bowser.png",
+            "Bowser Jr.": "icons/bowser_jr.png",
+            "Byleth": "icons/byleth.png",
+            "Captain Falcon": "icons/captain_falcon.png",
+            "Chrom": "icons/chrom.png",
+            "Cloud": "icons/cloud.png",
+            "Corrin": "icons/corrin.png",
+            "Daisy": "icons/daisy.png",
+            "Dark Pit": "icons/dark_pit.png",
+            "Diddy Kong": "icons/diddy_kong.png",
+            "Donkey Kong": "icons/donkey_kong.png",
+            "Dr. Mario": "icons/dr_mario.png",
+            "Duck Hunt": "icons/duck_hunt.png",
+            "Falco": "icons/falco.png",
+            "Fox": "icons/fox.png",
+            "Ganondorf": "icons/ganondorf.png",
+            "Greninja": "icons/greninja.png",
+            "Hero": "icons/hero.png",
+            "Ice Climbers": "icons/ice_climbers.png",
+            "Ike": "icons/ike.png",
+            "Incineroar": "icons/incineroar.png",
+            "Inkling": "icons/inkling.png",
+            "Isabelle": "icons/isabelle.png",
+            "Jigglypuff": "icons/jigglypuff.png",
+            "Joker": "icons/joker.png",
+            "Kazuya": "icons/kazuya.png",
+            "Ken": "icons/ken.png",
+            "King Dedede": "icons/king_dedede.png",
+            "King K. Rool": "icons/king_k_rool.png",
+            "Kirby": "icons/kirby.png",
+            "Link": "icons/link.png",
+            "Little Mac": "icons/little_mac.png",
+            "Lucario": "icons/lucario.png",
+            "Lucas": "icons/lucas.png",
+            "Lucina": "icons/lucina.png",
+            "Luigi": "icons/luigi.png",
+            "Mario": "icons/mario.png",
+            "Marth": "icons/marth.png",
+            "Mega Man": "icons/mega_man.png",
+            "Meta Knight": "icons/meta_knight.png",
+            "Mewtwo": "icons/mewtwo.png",
+            "Mii Brawler": "icons/mii_brawler.png",
+            "Mii Gunner": "icons/mii_gunner.png",
+            "Mii Swordfighter": "icons/mii_swordfighter.png",
+            "Min Min": "icons/minmin.png",
+            "Mr. Game & Watch": "icons/mr_game_watch.png",
+            "Ness": "icons/ness.png",
+            "Olimar": "icons/olimar.png",
+            "Pac-Man": "icons/pac_man.png",
+            "Palutena": "icons/palutena.png",
+            "Peach": "icons/peach.png",
+            "Pichu": "icons/pichu.png",
+            "Pikachu": "icons/pikachu.png",
+            "Piranha Plant": "icons/piranha_plant.png",
+            "Pit": "icons/pit.png",
+            "Pokémon Trainer": "icons/pokemon_trainer.png",
+            "Pyra/Mythra": "icons/pyra_mythra.png",
+            "R.O.B.": "icons/rob.png",
+            "Richter": "icons/richter.png",
+            "Ridley": "icons/ridley.png",
+            "Robin": "icons/robin.png",
+            "Rosalina & Luma": "icons/rosalina_luma.png",
+            "Roy": "icons/roy.png",
+            "Ryu": "icons/ryu.png",
+            "Samus": "icons/samus.png",
+            "Dark Samus": "icons/Dark_samus.png",
+            "Sephiroth": "icons/sephiroth.png",
+            "Sheik": "icons/sheik.png",
+            "Shulk": "icons/shulk.png",
+            "Simon": "icons/simon.png",
+            "Snake": "icons/snake.png",
+            "Sonic": "icons/sonic.png",
+            "Sora": "icons/sora.png",
+            "Steve": "icons/steve.png",
+            "Terry": "icons/terry.png",
+            "Toon Link": "icons/toon_link.png",
+            "Villager": "icons/villager.png",
+            "Wario": "icons/wario.png",
+            "Wii Fit Trainer": "icons/wii_fit_trainer.png",
+            "Wolf": "icons/wolf.png",
+            "Yoshi": "icons/yoshi.png",
+            "Young Link": "icons/young_link.png",
+            "Zelda": "icons/zelda.png",
+            "Zero Suit Samus": "icons/zero_suit_samus.png",
+        };
+
+        // ==================== VARIABLES DE ESTADO ====================
+        let rpsMode = false;
+        let currentStages = [];
+        let phase = "";
+        let banCount = 0;
+        let winner = "";
+        let winnerSelected = false;
+        let currentGame = 1;
+        let selectedStage = "";
+        let player1Character = null;
+        let player2Character = null;
+        let player1Score = 0;
+        let player2Score = 0;
+        let matchHistory = [];
+        let lastGameWinner = "";
+        let pendingBans = [];
+        let pendingPick = null;
+
+        // Variables para guardar personajes entre juegos
+        let savedPlayer1Character = null;
+        let savedPlayer2Character = null;
+
+        // ==================== FUNCIÓN TOGGLE DROPDOWN CON BUSCADOR ====================
+        function toggleDropdown(playerNum) {
+            const dropdown = document.getElementById(`p${playerNum}-dropdown`);
+            const button = document.querySelector(`#p${playerNum}-select-container .custom-select-button`);
+
+            // Cerrar otros dropdowns
+            document.querySelectorAll('.custom-select-dropdown').forEach(d => {
+                if (d.id !== `p${playerNum}-dropdown`) {
+                    d.classList.remove('show');
+                }
+            });
+            document.querySelectorAll('.custom-select-button').forEach(b => {
+                if (b !== button) {
+                    b.classList.remove('active');
+                }
+            });
+
+            // Toggle actual
+            dropdown.classList.toggle('show');
+            button.classList.toggle('active');
+
+            // Si se abre el dropdown, enfocar el buscador
+            if (dropdown.classList.contains('show')) {
+                setTimeout(() => {
+                    const searchInput = dropdown.querySelector('input[type="text"]');
+                    if (searchInput) {
+                        searchInput.focus();
+                        searchInput.value = ''; // Limpiar búsqueda anterior
+                        // Disparar evento input para resetear el filtro
+                        const inputEvent = new Event('input', {
+                            bubbles: true,
+                            cancelable: true,
+                        });
+                        searchInput.dispatchEvent(inputEvent);
+                    }
+                }, 100);
+            }
+        }
+
+        // ==================== FUNCIÓN CREATE CUSTOM SELECT CON BUSCADOR ====================
+        function createCustomSelect(playerNum) {
+            const dropdown = document.getElementById(`p${playerNum}-dropdown`);
+            dropdown.innerHTML = '';
+
+            // ===== AGREGAR BUSCADOR =====
+            const searchContainer = document.createElement('div');
+            searchContainer.style.padding = '10px';
+            searchContainer.style.position = 'sticky';
+            searchContainer.style.top = '0';
+            searchContainer.style.backgroundColor = '#1a1a1a';
+            searchContainer.style.borderBottom = '1px solid #4a4a4a';
+            searchContainer.style.zIndex = '10';
+
+            const searchInput = document.createElement('input');
+            searchInput.type = 'text';
+            searchInput.placeholder = ' BUSCAR PERSONAJE...';
+            searchInput.style.width = '100%';
+            searchInput.style.padding = '10px 10px 10px 35px';
+            searchInput.style.backgroundColor = '#0f0f0f';
+            searchInput.style.border = '1px solid #4a4a4a';
+            searchInput.style.color = '#ffffff';
+            searchInput.style.borderRadius = '4px';
+            searchInput.style.fontSize = '0.9rem';
+            searchInput.style.outline = 'none';
+
+            // Icono de búsqueda
+            const searchIcon = document.createElement('span');
+            searchIcon.style.position = 'absolute';
+            searchIcon.style.left = '20px';
+            searchIcon.style.top = '50%';
+            searchIcon.style.transform = 'translateY(-50%)';
+            searchIcon.style.opacity = '0.5';
+            searchIcon.style.fontSize = '14px';
+
+            searchContainer.style.position = 'relative';
+            searchContainer.appendChild(searchIcon);
+            searchContainer.appendChild(searchInput);
+
+            // Contenedor para las opciones (con scroll)
+            const optionsContainer = document.createElement('div');
+            optionsContainer.style.maxHeight = '350px';
+            optionsContainer.style.overflowY = 'auto';
+
+            dropdown.appendChild(searchContainer);
+            dropdown.appendChild(optionsContainer);
+
+            // Función para renderizar opciones filtradas
+            function renderOptions(filterText = '') {
+                optionsContainer.innerHTML = '';
+
+                // Opción vacía (solo si no hay filtro)
+                if (!filterText) {
+                    const emptyOption = document.createElement('div');
+                    emptyOption.className = 'custom-select-option';
+                    emptyOption.innerHTML = '<span> SELECCIONAR PERSONAJE</span>';
+                    emptyOption.onclick = () => selectCustomOption(playerNum, '');
+                    optionsContainer.appendChild(emptyOption);
+                }
+
+                // Filtrar personajes
+                const filteredRoster = smashUltimateRoster.filter(character =>
+                    character.toLowerCase().includes(filterText.toLowerCase())
+                );
+
+                // Mostrar personajes filtrados
+                filteredRoster.forEach(character => {
+                    const option = document.createElement('div');
+                    option.className = 'custom-select-option';
+                    option.dataset.character = character;
+
+                    const iconPath = stockIcons[character] || '';
+                    const iconHtml = iconPath ? `<img src="${iconPath}" onerror="this.style.display='none'">` : '';
+
+                    option.innerHTML = `${iconHtml}<span>${character}</span>`;
+                    option.onclick = () => {
+                        selectCustomOption(playerNum, character);
+                        // Cerrar dropdown después de seleccionar
+                        document.getElementById(`p${playerNum}-dropdown`).classList.remove('show');
+                        document.querySelector(`#p${playerNum}-select-container .custom-select-button`).classList.remove('active');
+                    };
+
+                    // Marcar como seleccionado si es el personaje actual
+                    if ((playerNum === 1 && character === player1Character) ||
+                        (playerNum === 2 && character === player2Character)) {
+                        option.classList.add('selected');
+                    }
+
+                    optionsContainer.appendChild(option);
+                });
+
+                // Mensaje si no hay resultados
+                if (filteredRoster.length === 0) {
+                    const noResults = document.createElement('div');
+                    noResults.className = 'custom-select-option';
+                    noResults.style.justifyContent = 'center';
+                    noResults.style.padding = '20px';
+                    noResults.style.color = '#888';
+                    noResults.innerHTML = '<span>😕 NO SE ENCONTRARON PERSONAJES</span>';
+                    optionsContainer.appendChild(noResults);
+                }
+            }
+
+            // Evento de búsqueda
+            searchInput.addEventListener('input', (e) => {
+                renderOptions(e.target.value);
+            });
+
+            // Render inicial
+            renderOptions();
+
+            // Prevenir que el dropdown se cierre al hacer clic en el buscador
+            searchInput.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        }
+
+        // ==================== FUNCIÓN SELECT CUSTOM OPTION ====================
+        function selectCustomOption(playerNum, character) {
+            // Actualizar texto del botón
+            const buttonText = document.getElementById(`p${playerNum}-select-text`);
+            const buttonIcon = document.getElementById(`p${playerNum}-select-icon`);
+
+            if (character) {
+                buttonText.textContent = character;
+                if (stockIcons[character]) {
+                    buttonIcon.src = stockIcons[character];
+                    buttonIcon.style.display = 'block';
+                } else {
+                    buttonIcon.style.display = 'none';
+                }
+            } else {
+                buttonText.textContent = 'SELECCIONAR PERSONAJE';
+                buttonIcon.style.display = 'none';
+            }
+
+            // Actualizar personaje y guardarlo
+            if (playerNum === 1) {
+                player1Character = character || null;
+                savedPlayer1Character = player1Character; // Guardar para siguientes juegos
+                document.getElementById("p1Name").textContent = character ? character.toUpperCase() : "NINGUNO";
+                document.getElementById("p1NameScore").textContent = character || "PLAYER 1";
+
+                // Actualizar icono del display
+                const displayIcon = document.getElementById("p1DisplayIcon");
+                if (character && stockIcons[character]) {
+                    displayIcon.src = stockIcons[character];
+                    displayIcon.style.display = 'block';
+                } else {
+                    displayIcon.style.display = 'none';
+                }
+            } else {
+                player2Character = character || null;
+                savedPlayer2Character = player2Character; // Guardar para siguientes juegos
+                document.getElementById("p2Name").textContent = character ? character.toUpperCase() : "NINGUNO";
+                document.getElementById("p2NameScore").textContent = character || "PLAYER 2";
+
+                // Actualizar icono del display
+                const displayIcon = document.getElementById("p2DisplayIcon");
+                if (character && stockIcons[character]) {
+                    displayIcon.src = stockIcons[character];
+                    displayIcon.style.display = 'block';
+                } else {
+                    displayIcon.style.display = 'none';
+                }
+            }
+        }
+
+        // ==================== FUNCIÓN PARA CARGAR PERSONAJES GUARDADOS ====================
+        function loadSavedCharacters() {
+            if (savedPlayer1Character) {
+                player1Character = savedPlayer1Character;
+                document.getElementById("p1-select-text").textContent = savedPlayer1Character;
+                document.getElementById("p1Name").textContent = savedPlayer1Character.toUpperCase();
+                document.getElementById("p1NameScore").textContent = savedPlayer1Character;
+
+                if (stockIcons[savedPlayer1Character]) {
+                    document.getElementById("p1-select-icon").src = stockIcons[savedPlayer1Character];
+                    document.getElementById("p1-select-icon").style.display = 'block';
+                    document.getElementById("p1DisplayIcon").src = stockIcons[savedPlayer1Character];
+                    document.getElementById("p1DisplayIcon").style.display = 'block';
+                }
+            }
+
+            if (savedPlayer2Character) {
+                player2Character = savedPlayer2Character;
+                document.getElementById("p2-select-text").textContent = savedPlayer2Character;
+                document.getElementById("p2Name").textContent = savedPlayer2Character.toUpperCase();
+                document.getElementById("p2NameScore").textContent = savedPlayer2Character;
+
+                if (stockIcons[savedPlayer2Character]) {
+                    document.getElementById("p2-select-icon").src = stockIcons[savedPlayer2Character];
+                    document.getElementById("p2-select-icon").style.display = 'block';
+                    document.getElementById("p2DisplayIcon").src = stockIcons[savedPlayer2Character];
+                    document.getElementById("p2DisplayIcon").style.display = 'block';
+                }
+            }
+
+            // Recrear selects para actualizar las clases 'selected'
+            createCustomSelect(1);
+            createCustomSelect(2);
+        }
+
+        // ==================== FUNCIONES DE GANADOR ====================
+        function updateWinnerDisplay() {
+            const winnerNameElement = document.getElementById("winnerName");
+            let winnerText = winner;
+
+            if (winner === "Player 1" && player1Character) {
+                winnerText += ` (${player1Character})`;
+            } else if (winner === "Player 2" && player2Character) {
+                winnerText += ` (${player2Character})`;
+            }
+            winnerNameElement.textContent = winnerText.toUpperCase();
+        }
+
+        function chooseRandomWinner() {
+            rpsMode = false;
+            const players = ["Player 1", "Player 2"];
+            winner = players[Math.floor(Math.random() * 2)];
+            lastGameWinner = winner;
+            const winnerDisplay = document.getElementById("winnerDisplay");
+            updateWinnerDisplay();
+            winnerDisplay.classList.remove("hidden");
+            winnerSelected = true;
+        }
+
+        function chooseRandomWinnerAndStart() {
+            if (!player1Character || !player2Character) {
+                alert("ERROR: AMBOS JUGADORES DEBEN SELECCIONAR UN PERSONAJE.");
+                return;
+            }
+
+            chooseRandomWinner();
+            startBans();
+        }
+
+        // ==================== FUNCIONES DE BANEO ====================
+        function startBans() {
+            if (!player1Character || !player2Character) {
+                alert("ERROR: AMBOS JUGADORES DEBEN SELECCIONAR UN PERSONAJE.");
+                return;
+            }
+
+            if (!winnerSelected) {
+                rpsMode = true;
+            }
+
+            document.getElementById("characterSection").classList.add("hidden");
+            document.getElementById("gameSection").classList.remove("hidden");
+
+            if (currentGame === 1) {
+                player1Score = 0;
+                player2Score = 0;
+                matchHistory = [];
+                updateScores();
+                updateMatchHistory();
+                startGame1();
+            } else {
+                currentStages = [...allStages];
+                phase = "winnerBan";
+                banCount = 0;
+                selectedStage = "";
+                pendingBans = [];
+                pendingPick = null;
+
+                renderStages();
+
+                document.getElementById("stagesContainer").style.display = "block";
+                document.getElementById("gameInfo").style.display = "block";
+                document.getElementById("gameButtons").style.display = "none";
+                document.getElementById("nextGameControls").style.display = "none";
+                document.getElementById("matchHistory").style.display = "block";
+
+                document.getElementById("gameNumber").textContent = currentGame;
+                document.getElementById("stageType").textContent = "STARTERS + COUNTERPICKS";
+
+                document.getElementById("status").innerText = `JUEGO ${currentGame}: ${winner} BANEA 3 STAGES`;
+                document.getElementById("phaseIndicator").innerText = `SELECCIONA 3 STAGES (ROJO) Y CONFIRMA`;
+            }
+        }
+
+        function startGame1() {
+            currentStages = [...starters];
+            phase = "rpsWinnerBan";
+            banCount = 0;
+            selectedStage = "";
+            pendingBans = [];
+            pendingPick = null;
+
+            renderStages();
+
+            document.getElementById("stagesContainer").style.display = "block";
+            document.getElementById("gameInfo").style.display = "block";
+            document.getElementById("gameButtons").style.display = "none";
+            document.getElementById("nextGameControls").style.display = "none";
+            document.getElementById("matchHistory").style.display = "block";
+
+            document.getElementById("gameNumber").textContent = currentGame;
+            document.getElementById("stageType").textContent = "STARTERS";
+
+            let statusText = "";
+
+            if (rpsMode) {
+                statusText = `JUEGO 1: GANADOR DEL RPS BANEA 1 STAGE`;
+            } else {
+                const winnerText = winner === "Player 1" ? player1Character : player2Character;
+                statusText = `JUEGO 1: ${winner} (${winnerText}) BANEA 1 STAGE`;
+            }
+
+            document.getElementById("status").innerText = statusText;
+            document.getElementById("phaseIndicator").innerText = "SELECCIONA 1 STAGE (ROJO) Y CONFIRMA";
+        }
+
+        function renderStages() {
+            const container = document.getElementById("stages");
+            container.innerHTML = "";
+            currentStages.forEach(stage => {
+                const div = document.createElement("div");
+                div.className = `stage ${stage.type === "starter" ? "starter-stage" : "counterpick-stage"}`;
+                div.dataset.name = stage.name;
+                div.dataset.type = stage.type;
+                div.innerHTML = `
+                    <img src="${stage.img}" alt="${stage.name}"
+                        onerror="this.onerror=null; this.src='https://via.placeholder.com/220x120/1f1f1f/4CAF50?text=${encodeURIComponent(stage.name.substring(0, 3))}'">
+                    <p>${stage.name}</p>
+                    <div class="stage-type">${stage.type === "starter" ? "STARTER" : "COUNTERPICK"}</div>
+                `;
+                div.onclick = () => handleClick(div, stage.name, stage.type);
+                container.appendChild(div);
+            });
+        }
+
+        function handleClick(element, name, type) {
+            if (element.classList.contains("banned") || element.classList.contains("selected")) return;
+
+            // Limpiar clases de fase anteriores
+            element.classList.remove('ban-phase', 'pick-phase');
+
+            if (currentGame === 1) {
+                if (phase === "rpsWinnerBan" || phase === "rpsLoserBan") {
+                    // FASE DE BANEO (ROJO)
+                    if (phase === "rpsWinnerBan") {
+                        document.querySelectorAll('.stage.temp-selected').forEach(el => {
+                            el.classList.remove('temp-selected', 'ban-phase', 'pick-phase');
+                        });
+                        element.classList.add('temp-selected', 'ban-phase');
+                        pendingBans = [name];
+                    }
+                    else if (phase === "rpsLoserBan") {
+                        if (element.classList.contains('temp-selected')) {
+                            element.classList.remove('temp-selected', 'ban-phase');
+                            pendingBans = pendingBans.filter(s => s !== name);
+                        } else {
+                            if (pendingBans.length < 2) {
+                                element.classList.add('temp-selected', 'ban-phase');
+                                pendingBans.push(name);
+                            }
+                        }
+                    }
+                }
+                else if (phase === "rpsWinnerPick") {
+                    // FASE DE SELECCIÓN (VERDE)
+                    document.querySelectorAll('.stage.temp-selected').forEach(el => {
+                        el.classList.remove('temp-selected', 'ban-phase', 'pick-phase');
+                    });
+                    element.classList.add('temp-selected', 'pick-phase');
+                    pendingPick = name;
+                }
+            }
+            else {
+                if (phase === "winnerBan") {
+                    // FASE DE BANEO (ROJO)
+                    if (element.classList.contains('temp-selected')) {
+                        element.classList.remove('temp-selected', 'ban-phase');
+                        pendingBans = pendingBans.filter(s => s !== name);
+                    } else {
+                        if (pendingBans.length < 3) {
+                            element.classList.add('temp-selected', 'ban-phase');
+                            pendingBans.push(name);
+                        }
+                    }
+                }
+                else if (phase === "loserPick") {
+                    // FASE DE SELECCIÓN (VERDE)
+                    document.querySelectorAll('.stage.temp-selected').forEach(el => {
+                        el.classList.remove('temp-selected', 'ban-phase', 'pick-phase');
+                    });
+                    element.classList.add('temp-selected', 'pick-phase');
+                    pendingPick = name;
+                }
+            }
+        }
+
+        function confirmCurrentPhase() {
+            if (currentGame === 1) {
+                if (phase === "rpsWinnerBan") {
+                    if (pendingBans.length === 1) {
+                        // CONFIRMAR BANEO DEL GANADOR (ROJO)
+                        document.querySelectorAll('.stage.temp-selected').forEach(el => {
+                            el.classList.add('banned');
+                            el.classList.remove('temp-selected', 'ban-phase', 'pick-phase');
+                        });
+                        phase = "rpsLoserBan";
+                        pendingBans = [];
+                        pendingPick = null;
+                        document.getElementById("status").innerText = "JUEGO 1: PERDEDOR BANEA 2 STAGES";
+                        document.getElementById("phaseIndicator").innerText = "SELECCIONA 2 STAGES (ROJO) Y CONFIRMA";
+                    } else {
+                        alert("SELECCIONA 1 STAGE PARA BANEAR");
+                    }
+                }
+                else if (phase === "rpsLoserBan") {
+                    if (pendingBans.length === 2) {
+                        // CONFIRMAR BANEOS DEL PERDEDOR (ROJO)
+                        document.querySelectorAll('.stage.temp-selected').forEach(el => {
+                            el.classList.add('banned');
+                            el.classList.remove('temp-selected', 'ban-phase', 'pick-phase');
+                        });
+                        phase = "rpsWinnerPick";
+                        pendingBans = [];
+                        pendingPick = null;
+                        document.getElementById("status").innerText = "JUEGO 1: GANADOR ELIGE STAGE";
+                        document.getElementById("phaseIndicator").innerText = "SELECCIONA 1 STAGE (VERDE) Y CONFIRMA";
+                    } else {
+                        alert("SELECCIONA 2 STAGES PARA BANEAR");
+                    }
+                }
+                else if (phase === "rpsWinnerPick") {
+                    if (pendingPick) {
+                        // CONFIRMAR SELECCIÓN DEL GANADOR (VERDE)
+                        document.querySelectorAll('.stage.temp-selected').forEach(el => {
+                            el.classList.add('selected');
+                            el.classList.remove('temp-selected', 'ban-phase', 'pick-phase');
+                        });
+                        selectedStage = pendingPick;
+                        document.getElementById("status").innerText = `STAGE: ${selectedStage}`;
+                        phase = "done";
+                        document.getElementById("gameButtons").style.display = "flex";
+                        document.getElementById("stagesContainer").style.display = "none";
+                        document.getElementById("phaseIndicator").innerText = "REGISTRAR GANADOR";
+                    } else {
+                        alert("SELECCIONA 1 STAGE");
+                    }
+                }
+            }
+            else {
+                if (phase === "winnerBan") {
+                    if (pendingBans.length === 3) {
+                        // CONFIRMAR BANEOS DEL GANADOR (ROJO)
+                        document.querySelectorAll('.stage.temp-selected').forEach(el => {
+                            el.classList.add('banned');
+                            el.classList.remove('temp-selected', 'ban-phase', 'pick-phase');
+                        });
+                        phase = "loserPick";
+                        pendingBans = [];
+                        pendingPick = null;
+                        document.getElementById("status").innerText = `JUEGO ${currentGame}: PERDEDOR ELIGE STAGE`;
+                        document.getElementById("phaseIndicator").innerText = "SELECCIONA 1 STAGE (VERDE) Y CONFIRMA";
+                    } else {
+                        alert("SELECCIONA 3 STAGES PARA BANEAR");
+                    }
+                }
+                else if (phase === "loserPick") {
+                    if (pendingPick) {
+                        // CONFIRMAR SELECCIÓN DEL PERDEDOR (VERDE)
+                        document.querySelectorAll('.stage.temp-selected').forEach(el => {
+                            el.classList.add('selected');
+                            el.classList.remove('temp-selected', 'ban-phase', 'pick-phase');
+                        });
+                        selectedStage = pendingPick;
+                        document.getElementById("status").innerText = `STAGE: ${selectedStage}`;
+                        phase = "done";
+                        document.getElementById("gameButtons").style.display = "flex";
+                        document.getElementById("stagesContainer").style.display = "none";
+                        document.getElementById("phaseIndicator").innerText = "REGISTRAR GANADOR";
+                    } else {
+                        alert("SELECCIONA 1 STAGE");
+                    }
+                }
+            }
+        }
+
+        function recordWin(winningPlayer) {
+            if (winningPlayer === "Player 1") {
+                player1Score++;
+                lastGameWinner = "Player 1";
+            } else {
+                player2Score++;
+                lastGameWinner = "Player 2";
+            }
+
+            matchHistory.push({
+                game: currentGame,
+                winner: winningPlayer,
+                stage: selectedStage
+            });
+
+            updateScores();
+            updateMatchHistory();
+
+            document.getElementById("gameButtons").style.display = "none";
+            document.getElementById("nextGameControls").style.display = "block";
+            document.getElementById("status").innerText = `${winningPlayer} GANA EL JUEGO ${currentGame}`;
+            document.getElementById("phaseIndicator").innerText = `GANADOR: ${winningPlayer}`;
+
+            checkSetWinner();
+        }
+
+        function checkSetWinner() {
+            const resetSetBtn = document.getElementById("resetSetBtn");
+            const nextGameBtn = document.getElementById("nextGameBtn");
+
+            if (player1Score === 3) {
+                document.getElementById("status").innerText = `🏆 PLAYER 1 GANA EL SET ${player1Score}-${player2Score} 🏆`;
+                document.getElementById("phaseIndicator").innerText = "¡FELICIDADES!";
+                nextGameBtn.classList.add("hidden");
+                resetSetBtn.classList.remove("hidden");
+                resetSetBtn.innerText = "REINICIAR SET";
+            }
+            else if (player2Score === 3) {
+                document.getElementById("status").innerText = `🏆 PLAYER 2 GANA EL SET ${player2Score}-${player1Score} 🏆`;
+                document.getElementById("phaseIndicator").innerText = "¡FELICIDADES!";
+                nextGameBtn.classList.add("hidden");
+                resetSetBtn.classList.remove("hidden");
+                resetSetBtn.innerText = "REINICIAR SET";
+            }
+            else if (player1Score === 2 || player2Score === 2) {
+                resetSetBtn.classList.remove("hidden");
+                resetSetBtn.innerText = "REINICIAR SET";
+                nextGameBtn.classList.remove("hidden");
+            }
+            else {
+                resetSetBtn.classList.add("hidden");
+                nextGameBtn.classList.remove("hidden");
+            }
+        }
+        function resetSet() {
+            if (confirm("¿REINICIAR EL SET COMPLETO? SE PERDERÁ EL HISTORIAL.")) {
+                resetAll(); // Llama al mismo reset que el botón fijo
+            }
+        }
+
+        function nextGame() {
+            document.getElementById("characterSection").classList.remove("hidden");
+            document.getElementById("gameSection").classList.add("hidden");
+
+            currentGame++;
+            winner = lastGameWinner;
+            winnerSelected = true;
+            rpsMode = false;
+
+            document.getElementById("randomWinnerBtn").classList.add("hidden");
+            document.getElementById("startBansBtn").classList.remove("hidden");
+
+            updateWinnerDisplay();
+            document.getElementById("winnerDisplay").classList.remove("hidden");
+
+            // Cargar personajes guardados
+            loadSavedCharacters();
+        }
+
+        function updateScores() {
+            document.getElementById("p1Score").textContent = player1Score;
+            document.getElementById("p2Score").textContent = player2Score;
+        }
+
+        function updateMatchHistory() {
+            const historyList = document.getElementById("historyList");
+            historyList.innerHTML = "";
+            matchHistory.forEach(match => {
+                const div = document.createElement("div");
+                div.className = "match-item";
+                div.innerHTML = `
+                    <span>JUEGO ${match.game}</span>
+                    <span class="match-winner">${match.winner === "Player 1" ? "P1" : "P2"}</span>
+                    <span>${match.stage}</span>
+                `;
+                historyList.appendChild(div);
+            });
+        }
+
+        function resetAll() {
+            currentStages = [];
+            phase = "";
+            banCount = 0;
+            winner = "";
+            winnerSelected = false;
+            currentGame = 1;
+            selectedStage = "";
+            player1Character = null;
+            player2Character = null;
+            player1Score = 0;
+            player2Score = 0;
+            matchHistory = [];
+            lastGameWinner = "";
+            pendingBans = [];
+            pendingPick = null;
+            rpsMode = false;
+            savedPlayer1Character = null;
+            savedPlayer2Character = null;
+
+            // Resetear selectores personalizados
+            document.getElementById("p1-select-text").textContent = "SELECCIONAR PERSONAJE";
+            document.getElementById("p2-select-text").textContent = "SELECCIONAR PERSONAJE";
+            document.getElementById("p1-select-icon").style.display = "none";
+            document.getElementById("p2-select-icon").style.display = "none";
+
+            document.getElementById("p1DisplayIcon").style.display = "none";
+            document.getElementById("p2DisplayIcon").style.display = "none";
+
+            document.getElementById("characterSection").classList.remove("hidden");
+            document.getElementById("gameSection").classList.add("hidden");
+            document.getElementById("winnerDisplay").classList.add("hidden");
+
+            document.getElementById("p1Name").textContent = "NINGUNO";
+            document.getElementById("p2Name").textContent = "NINGUNO";
+            document.getElementById("p1NameScore").textContent = "PLAYER 1";
+            document.getElementById("p2NameScore").textContent = "PLAYER 2";
+            document.getElementById("status").innerText = "SELECCIONA LOS PERSONAJES";
+            document.getElementById("phaseIndicator").innerText = "";
+
+            document.getElementById("randomWinnerBtn").classList.remove("hidden");
+            document.getElementById("startBansBtn").classList.remove("hidden");
+
+            document.getElementById("resetSetBtn").classList.add("hidden");
+            document.getElementById("nextGameBtn").classList.remove("hidden");
+
+            updateMatchHistory();
+            updateScores();
+
+            // Recrear selects
+            createCustomSelect(1);
+            createCustomSelect(2);
+        }
+
+        // ==================== INIT ====================
+        window.onload = function () {
+            createCustomSelect(1);
+            createCustomSelect(2);
+            document.getElementById("status").innerText = "SELECCIONA LOS PERSONAJES";
+        };
+    </script>
+
+</body>
+</html>
