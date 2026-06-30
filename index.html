@@ -356,72 +356,73 @@ header h1 {
             margin-left: 8px;
         }
 
-        /* ===== ESTILOS PARA STAGES ===== */
-        .stage-container {
-            width: 100%;
-            margin: 30px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+       /* ===== ESTILOS PARA STAGES ===== */
+.stage-container {
+    width: 100%;
+    margin: 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-        #stages {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 15px;
-            max-width: 1200px;
-            margin: 0 auto;
-            justify-content: center;
-        }
+#stages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;          /* Reducido de 20px */
+    padding: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: center;
+}
 
-        .stage {
-            background-color: #1f1f1f;
-            border-radius: 8px;
-            min-width: 220px;
-            width: 220px;
-            cursor: pointer;
-            transition: 0.2s ease;
-            overflow: hidden;
-            border: 1px solid #333;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
+.stage {
+    background-color: #1f1f1f;
+    border-radius: 8px;
+    min-width: 160px;   /* <--- CAMBIADO de 220px */
+    width: 160px;       /* <--- CAMBIADO de 220px */
+    cursor: pointer;
+    transition: 0.2s ease;
+    overflow: hidden;
+    border: 1px solid #333;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 
-            .stage:hover {
-                transform: translateY(-3px);
-                background-color: #262626;
-                border-color: #888;
-            }
+.stage:hover {
+    transform: translateY(-3px);
+    background-color: #262626;
+    border-color: #888;
+}
 
-            .stage img {
-                width: 100%;
-                height: 120px;
-                object-fit: cover;
-                filter: grayscale(50%);
-            }
+.stage img {
+    width: 100%;
+    height: 100px;      /* <--- CAMBIADO de 120px */
+    object-fit: cover;
+    filter: grayscale(50%);
+}
 
-            .stage p {
-                padding: 12px;
-                font-weight: 500;
-                color: #ffffff;
-                border-bottom: 1px solid #333;
-                width: 100%;
-                text-align: center;
-            }
+.stage p {
+    padding: 8px;       /* <--- CAMBIADO de 12px */
+    font-size: 0.8rem;  /* <--- AÑADIDO */
+    font-weight: 500;
+    color: #ffffff;
+    border-bottom: 1px solid #333;
+    width: 100%;
+    text-align: center;
+}
 
-        .stage-type {
-            padding: 0 12px 12px;
-            font-size: 0.7rem;
-            color: #aaa;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            width: 100%;
-            text-align: center;
-        }
+.stage-type {
+    padding: 0 8px 8px; /* <--- CAMBIADO de 0 12px 12px */
+    font-size: 0.6rem;  /* <--- CAMBIADO de 0.7rem */
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 100%;
+    text-align: center;
+}
 
         /* ESTADOS DE STAGES - ROJO PARA BANEOS */
         .banned {
