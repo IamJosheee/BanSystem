@@ -693,41 +693,40 @@ header h1 {
         right: 10px;
     }
 
-    /* ===== ESTILOS PARA STAGES EN MÓVIL (MÁS COMPACTOS) ===== */
+    /* ===== ESTILOS PARA STAGES EN MÓVIL (SIN ESTIRAR) ===== */
     #stages {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-        padding: 8px;
-        max-width: 500px; /* <--- LIMITA EL ANCHO */
+        grid-template-columns: repeat(2, 160px); /* <--- ANCHO FIJO */
+        gap: 12px;
+        padding: 10px;
+        justify-content: center; /* <--- CENTRA EL GRID */
+        max-width: 100%;
         margin: 0 auto;
     }
 
     .stage {
         min-height: auto;
-        min-width: auto;
-        width: 100%;
-        max-width: 180px; /* <--- TAMAÑO MÁXIMO */
-        justify-self: center; /* <--- CENTRA CADA STAGE */
+        min-width: 160px; /* <--- ANCHO FIJO */
+        width: 160px; /* <--- ANCHO FIJO */
+        max-width: 160px; /* <--- ANCHO FIJO */
+        justify-self: center;
         border-radius: 6px;
     }
 
     .stage img {
-        height: 60px; /* <--- MÁS PEQUEÑO */
+        height: 90px; /* <--- MANTIENE EL TAMAÑO ORIGINAL */
         border-radius: 4px 4px 0 0;
     }
 
     .stage p {
-        font-size: 0.55rem; /* <--- MÁS PEQUEÑO */
-        padding: 4px 3px;
-        min-height: 20px;
-        line-height: 1.1;
+        font-size: 0.7rem; /* <--- MANTIENE EL TAMAÑO ORIGINAL */
+        padding: 6px 4px;
+        min-height: 30px;
     }
 
     .stage-type {
-        font-size: 0.4rem;
-        padding: 2px 2px 5px;
-        letter-spacing: 0.3px;
+        font-size: 0.5rem; /* <--- MANTIENE EL TAMAÑO ORIGINAL */
+        padding: 2px 4px 6px;
     }
 
     .button-group {
@@ -739,41 +738,12 @@ header h1 {
         padding: 12px 20px;
     }
 }
-
-/* ===== PARA MÓVILES MUY PEQUEÑOS ===== */
-@media (max-width: 480px) {
-    #stages {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 6px;
-        padding: 5px;
-        max-width: 350px; /* <--- AÚN MÁS ESTRECHO */
-    }
-
-    .stage {
-        max-width: 150px; /* <--- MÁS PEQUEÑO */
-    }
-
-    .stage img {
-        height: 50px;
-    }
-
-    .stage p {
-        font-size: 0.5rem;
-        padding: 3px 2px;
-        min-height: 16px;
-    }
-
-    .stage-type {
-        font-size: 0.35rem;
-        padding: 1px 2px 4px;
-    }
-}
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>NAVSON SMASH</h1>
+            <h1>Ban System</h1>
         </header>
 
         <div class="fixed-reset">
