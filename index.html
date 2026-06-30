@@ -7,15 +7,24 @@
     <title>Navson Smash</title>
     <meta name="theme-color" content="#161616">
     <style>
-           /* ===== SOLUCIÓN PARA SAFARI ===== */
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== SOLUCIÓN PARA SAFARI ===== */
 html {
     background: #0a0a0a;
-    min-height: 100dvh;
+    /* Reemplazamos vh y webkit-fill por dvh */
+    min-height: 100dvh; 
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #ffffff;
+    /* Reemplazamos vh y webkit-fill por dvh */
     min-height: 100dvh;
     margin: 0;
     padding: 0;
@@ -24,16 +33,15 @@ body {
     position: relative;
 }
 
-/* Fondo gradiente extendido para evitar el corte negro */
+/* Fondo gradiente como pseudo-elemento */
 body::before {
     content: '';
     position: fixed;
-    /* Truco: Expandimos el fondo 100px más allá de la pantalla por arriba y abajo 
-       para que al hacer el "rebote" (scroll) en Safari nunca se vea el corte */
-    top: -100px;
+    top: 0;
     left: 0;
-    right: 0;
-    bottom: -100px;
+    width: 100%;
+    /* Aseguramos que el fondo cubra exactamente el viewport dinámico */
+    height: 100dvh; 
     background: linear-gradient(135deg, #0a0a0a, #161616);
     z-index: -1;
 }
@@ -43,9 +51,9 @@ body::before {
     width: 100%;
     max-width: 1800px;
     margin: 0 auto;
-    /* Truco 2: Añadimos padding extra dinámico en la parte inferior para esquivar la barra de Safari */
-    padding: 30px 2.5% calc(40px + env(safe-area-inset-bottom)); 
-    min-height: 100dvh;
+    padding: 30px 2.5%;
+    /* Reemplazamos vh y webkit-fill por dvh */
+    min-height: 100dvh; 
 }
 
             header h1 {
