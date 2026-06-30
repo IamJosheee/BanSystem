@@ -6,54 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Navson Smash</title>
     <style>
-/* ===== RESET ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* ===== SOLUCIÓN PARA SAFARI ===== */
-html {
-    background: #0a0a0a;
-    min-height: 100%;
-    min-height: -webkit-fill-available;
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #ffffff;
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-    margin: 0;
-    padding: 0;
-    -webkit-overflow-scrolling: touch;
-    background: transparent;
-    position: relative;
-}
-
-/* Fondo gradiente como pseudo-elemento */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, #0a0a0a, #161616);
-    z-index: -1;
-}
-
-/* ===== CONTENEDOR PRINCIPAL ===== */
-.container {
-    width: 100%;
-    max-width: 1800px;
-    margin: 0 auto;
-    padding: 30px 2.5%;
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-}
-
+               /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* ===== SOLUCIÓN PARA SAFARI ===== */
+        html {
+            background: #0a0a0a;
+            /* Reemplazamos vh y webkit-fill por dvh */
+            min-height: 100dvh; 
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ffffff;
+            /* Reemplazamos vh y webkit-fill por dvh */
+            min-height: 100dvh;
+            margin: 0;
+            padding: 0;
+            -webkit-overflow-scrolling: touch;
+            background: transparent;
+            position: relative;
+        }
+        
+        /* Fondo gradiente como pseudo-elemento */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            /* Aseguramos que el fondo cubra exactamente el viewport dinámico */
+            height: 100dvh; 
+            background: linear-gradient(135deg, #0a0a0a, #161616);
+            z-index: -1;
+        }
+        
+        /* ===== CONTENEDOR PRINCIPAL ===== */
+        .container {
+            width: 100%;
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 30px 2.5%;
+            /* Reemplazamos vh y webkit-fill por dvh */
+            min-height: 100dvh; 
+        }
         /* ===== HEADER ===== */
         header {
             text-align: center;
