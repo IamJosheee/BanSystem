@@ -3,60 +3,46 @@
 <head>
     <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Ban System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navson Smash</title>
     <style>
-/* ===== RESET ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* ===== SOLUCIÓN PARA SAFARI ===== */
-html {
-    background-color: #131313; /* Cambiado a #131313 */
-    min-height: 100%;
-    min-height: -webkit-fill-available;
-}
+        /* ===== BODY ===== */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a, #161616);
+            color: #ffffff;
+            min-height: 100vh;
+        }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #0a0a0a, #161616);
-    background-attachment: fixed;
-    color: #ffffff;
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-    margin: 0;
-    padding: 0;
-    -webkit-overflow-scrolling: touch;
-}
+        /* ===== CONTENEDOR PRINCIPAL ===== */
+        .container {
+            width: 95%;
+            max-width: 1800px;
+            margin: auto;
+            padding: 30px 0;
+        }
 
-/* ===== CONTENEDOR PRINCIPAL ===== */
-.container {
-    width: 100%;
-    max-width: 1800px;
-    margin: 0 auto;
-    padding: 30px 2.5%;
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-}min-height: -webkit-fill-available;
-}
-      header {
-    text-align: center;
-    width: 100%;
-}
+        /* ===== HEADER ===== */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
 
-header h1 {
-    font-size: 2.5rem;
-    color: #ffffff;
-    margin-bottom: 5px;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    font-weight: 400;
-    display: block; /* Asegura que sea bloque */
-    text-align: center; /* Centra el texto */
-}
+            header h1 {
+                font-size: 2.5rem;
+                color: #ffffff;
+                margin-bottom: 5px;
+                text-transform: uppercase;
+                letter-spacing: 5px;
+                font-weight: 400;
+            }
 
         /* ===== SECCIONES ===== */
         .section {
@@ -356,166 +342,164 @@ header h1 {
             margin-left: 8px;
         }
 
- /* ===== ESTILOS PARA STAGES ===== */
-.stage-container {
-    width: 100%;
-    margin: 20px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+        /* ===== ESTILOS PARA STAGES ===== */
+        .stage-container {
+            width: 100%;
+            margin: 30px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-#stages {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 15px;
-    padding: 15px;
-    max-width: 900px; /* <--- LIMITA EL ANCHO MÁXIMO */
-    margin: 0 auto;
-    width: 100%;
-}
+        #stages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+            justify-content: center;
+        }
 
-.stage {
-    background-color: #1f1f1f;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.2s ease;
-    overflow: hidden;
-    border: 1px solid #333;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    max-width: 200px; /* <--- TAMAÑO MÁXIMO */
-    justify-self: center; /* <--- CENTRA CADA STAGE */
-}
+        .stage {
+            background-color: #1f1f1f;
+            border-radius: 8px;
+            min-width: 220px;
+            width: 220px;
+            cursor: pointer;
+            transition: 0.2s ease;
+            overflow: hidden;
+            border: 1px solid #333;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
 
-.stage:hover {
-    transform: translateY(-3px);
-    background-color: #262626;
-    border-color: #888;
-}
+            .stage:hover {
+                transform: translateY(-3px);
+                background-color: #262626;
+                border-color: #888;
+            }
 
-.stage img {
-    width: 100%;
-    height: 90px;
-    object-fit: cover;
-    filter: grayscale(50%);
-    transition: 0.3s ease;
-}
+            .stage img {
+                width: 100%;
+                height: 120px;
+                object-fit: cover;
+                filter: grayscale(50%);
+            }
 
-.stage:hover img {
-    filter: grayscale(20%);
-}
+            .stage p {
+                padding: 12px;
+                font-weight: 500;
+                color: #ffffff;
+                border-bottom: 1px solid #333;
+                width: 100%;
+                text-align: center;
+            }
 
-.stage p {
-    padding: 6px 4px;
-    font-size: 0.7rem;
-    font-weight: 500;
-    color: #ffffff;
-    border-bottom: 1px solid #333;
-    width: 100%;
-    text-align: center;
-    line-height: 1.2;
-    min-height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        .stage-type {
+            padding: 0 12px 12px;
+            font-size: 0.7rem;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+            text-align: center;
+        }
 
-.stage-type {
-    padding: 2px 4px 6px;
-    font-size: 0.5rem;
-    color: #aaa;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    width: 100%;
-    text-align: center;
-}
+        /* ESTADOS DE STAGES - ROJO PARA BANEOS */
+        .banned {
+            opacity: 0.4;
+            border: 2px solid #ff4444;
+            filter: grayscale(80%);
+            background-color: #2a1a1a;
+        }
 
-/* ===== ESTADOS DE STAGES ===== */
-.stage.banned {
-    opacity: 0.3;
-    border: 2px solid #ff4444;
-    background-color: #2a1a1a;
-}
+            .banned:hover {
+                transform: none;
+                border-color: #ff6666;
+            }
 
-.stage.banned:hover {
-    transform: none;
-    border-color: #ff6666;
-}
+        /* ESTILO PARA SELECCIÓN TEMPORAL EN FASE DE BANEO - ROJO */
+        .stage.temp-selected.ban-phase {
+            opacity: 0.9;
+            border: 3px solid #ff4444;
+            filter: grayscale(20%);
+            background-color: #3a1a1a;
+            box-shadow: 0 0 20px rgba(255, 68, 68, 0.4);
+        }
 
-.stage.temp-selected.ban-phase {
-    border: 3px solid #ff4444;
-    background-color: #3a1a1a;
-    box-shadow: 0 0 20px rgba(255, 68, 68, 0.3);
-}
+            .stage.temp-selected.ban-phase:hover {
+                opacity: 1;
+                border-color: #ff6666;
+                background-color: #4a2a2a;
+            }
 
-.stage.temp-selected.ban-phase:hover {
-    opacity: 1;
-    border-color: #ff6666;
-    background-color: #4a2a2a;
-}
+            .stage.temp-selected.ban-phase p {
+                color: #ffffff;
+                font-weight: 600;
+            }
 
-.stage.temp-selected.ban-phase p {
-    color: #ffffff;
-    font-weight: 600;
-}
+            .stage.temp-selected.ban-phase .stage-type {
+                color: #cccccc;
+            }
 
-.stage.temp-selected.ban-phase .stage-type {
-    color: #cccccc;
-}
+        /* ESTILO PARA SELECCIÓN TEMPORAL EN FASE DE SELECCIÓN - VERDE */
+        .stage.temp-selected.pick-phase {
+            opacity: 0.9;
+            border: 3px solid #4CAF50;
+            filter: grayscale(20%);
+            background-color: #1a3a1a;
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.4);
+        }
 
-.stage.temp-selected.pick-phase {
-    border: 3px solid #4CAF50;
-    background-color: #1a3a1a;
-    box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
-}
+            .stage.temp-selected.pick-phase:hover {
+                opacity: 1;
+                border-color: #66BB6A;
+                background-color: #2a4a2a;
+            }
 
-.stage.temp-selected.pick-phase:hover {
-    opacity: 1;
-    border-color: #66BB6A;
-    background-color: #2a4a2a;
-}
+            .stage.temp-selected.pick-phase p {
+                color: #ffffff;
+                font-weight: 600;
+            }
 
-.stage.temp-selected.pick-phase p {
-    color: #ffffff;
-    font-weight: 600;
-}
+            .stage.temp-selected.pick-phase .stage-type {
+                color: #cccccc;
+            }
 
-.stage.temp-selected.pick-phase .stage-type {
-    color: #cccccc;
-}
+        /* ESTILO PARA STAGE SELECCIONADO (JUEGO) - VERDE */
+        .stage.selected {
+            border: 2px solid #4CAF50;
+            background-color: #1a3a1a;
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.3);
+        }
 
-.stage.selected {
-    border: 2px solid #4CAF50;
-    background-color: #1a3a1a;
-    box-shadow: 0 0 15px rgba(76, 175, 80, 0.3);
-}
+            .stage.selected p {
+                color: #ffffff;
+                font-weight: 600;
+            }
 
-.stage.selected p {
-    color: #ffffff;
-    font-weight: 600;
-}
+            .stage.selected .stage-type {
+                color: #cccccc;
+            }
 
-.stage.selected .stage-type {
-    color: #cccccc;
-}
+        .starter-stage {
+            border-left: 4px solid #888;
+        }
 
-.starter-stage {
-    border-left: 4px solid #888;
-}
+        .counterpick-stage {
+            border-left: 4px solid #aaa;
+        }
 
-.counterpick-stage {
-    border-left: 4px solid #aaa;
-}
+        .confirm-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0 10px;
+        }
 
-.confirm-container {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0 10px;
-}
         /* ===== SCOREBOARD CENTRADO ===== */
         .score-container {
             background-color: #1a1a1a;
@@ -539,18 +523,31 @@ header h1 {
             justify-content: center;
         }
 
-            .player-score h3 {
-                color: #cccccc;
-                margin-bottom: 5px;
-                font-size: 1rem;
-                border-bottom: none;
-                padding-bottom: 0;
-                border-left: none;
-                padding-left: 0;
-                letter-spacing: 2px;
-                text-align: center;
-                width: 100%;
-            }
+        .player-score h3 {
+    color: #cccccc;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    border-bottom: none;
+    padding-bottom: 0;
+    border-left: none;
+    padding-left: 0;
+    letter-spacing: 2px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.player-score h3 img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    background: transparent;
+    border-radius: 4px;
+    padding: 2px;
+}
 
         .score {
             font-size: 3rem;
@@ -627,10 +624,36 @@ header h1 {
                 border-bottom: none;
             }
 
-        .match-winner {
-            color: #4CAF50;
-            font-weight: 600;
-        }
+       .match-winner {
+    color: #4CAF50;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.match-winner img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    background: transparent;
+    border-radius: 3px;
+    padding: 1px;
+}
+
+.match-stage {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.match-stage img {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    border-radius: 3px;
+    border: 1px solid #444;
+}
 
         .game-buttons {
             display: flex;
@@ -663,87 +686,87 @@ header h1 {
         .hidden {
             display: none !important;
         }
-
-@media (max-width: 768px) {
-    .container {
-        width: 98%;
-        padding: 15px 0;
-    }
-
-    header h1 {
-        font-size: 1.8rem;
-        letter-spacing: 3px;
-    }
-
-    .character-selector {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .score {
-        font-size: 2rem;
-    }
-
-    .vs-divider {
-        padding: 0 10px;
-    }
-
-    .fixed-reset {
-        bottom: 10px;
-        right: 10px;
-    }
-
-    /* ===== ESTILOS PARA STAGES EN MÓVIL (SIN ESTIRAR) ===== */
-    #stages {
-        display: grid;
-        grid-template-columns: repeat(2, 160px); /* <--- ANCHO FIJO */
-        gap: 12px;
-        padding: 10px;
-        justify-content: center; /* <--- CENTRA EL GRID */
-        max-width: 100%;
-        margin: 0 auto;
-    }
-
-    .stage {
-        min-height: auto;
-        min-width: 160px; /* <--- ANCHO FIJO */
-        width: 160px; /* <--- ANCHO FIJO */
-        max-width: 160px; /* <--- ANCHO FIJO */
-        justify-self: center;
-        border-radius: 6px;
-    }
-
-    .stage img {
-        height: 90px; /* <--- MANTIENE EL TAMAÑO ORIGINAL */
-        border-radius: 4px 4px 0 0;
-    }
-
-    .stage p {
-        font-size: 0.7rem; /* <--- MANTIENE EL TAMAÑO ORIGINAL */
-        padding: 6px 4px;
-        min-height: 30px;
-    }
-
-    .stage-type {
-        font-size: 0.5rem; /* <--- MANTIENE EL TAMAÑO ORIGINAL */
-        padding: 2px 4px 6px;
-    }
-
-    .button-group {
-        gap: 15px;
-    }
-
-    .button-group button {
-        min-width: 180px;
-        padding: 12px 20px;
-    }
+/* ===== STAGE DISPLAY ===== */
+.stage-display {
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    padding: 12px 20px;
+    margin: 15px auto;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    border-left: 4px solid #ff9800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
 }
+
+.stage-display img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #444;
+}
+
+.stage-display span {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+
+        @media (max-width: 768px) {
+            .container {
+                width: 98%;
+                padding: 15px 0;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+                letter-spacing: 3px;
+            }
+
+            .character-selector {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .score {
+                font-size: 2rem;
+            }
+
+            .vs-divider {
+                padding: 0 10px;
+            }
+
+            .fixed-reset {
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .stage {
+                min-width: 180px;
+                width: 180px;
+            }
+
+            .button-group {
+                gap: 15px;
+            }
+
+                .button-group button {
+                    min-width: 180px;
+                    padding: 12px 20px;
+                }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Ban System</h1>
+            <h1>NAVSON SMASH</h1>
         </header>
 
         <div class="fixed-reset">
@@ -813,6 +836,12 @@ header h1 {
             </div>
 
             <div id="status">CARGANDO...</div>
+<!-- STAGE DISPLAY -->
+<div id="stageDisplay" class="stage-display hidden">
+    <span>STAGE:</span>
+    <img id="stageDisplayIcon" src="" alt="">
+    <span id="stageDisplayName">-</span>
+</div>
             <div id="phaseIndicator" class="phase-indicator"></div>
 
             <div id="gameInfo" class="current-game" style="display: none;">
@@ -1150,90 +1179,109 @@ header h1 {
         }
 
         // ==================== FUNCIÓN SELECT CUSTOM OPTION ====================
-        function selectCustomOption(playerNum, character) {
-            // Actualizar texto del botón
-            const buttonText = document.getElementById(`p${playerNum}-select-text`);
-            const buttonIcon = document.getElementById(`p${playerNum}-select-icon`);
+  function selectCustomOption(playerNum, character) {
+    // Actualizar texto del botón
+    const buttonText = document.getElementById(`p${playerNum}-select-text`);
+    const buttonIcon = document.getElementById(`p${playerNum}-select-icon`);
 
-            if (character) {
-                buttonText.textContent = character;
-                if (stockIcons[character]) {
-                    buttonIcon.src = stockIcons[character];
-                    buttonIcon.style.display = 'block';
-                } else {
-                    buttonIcon.style.display = 'none';
-                }
-            } else {
-                buttonText.textContent = 'SELECCIONAR PERSONAJE';
-                buttonIcon.style.display = 'none';
-            }
-
-            // Actualizar personaje y guardarlo
-            if (playerNum === 1) {
-                player1Character = character || null;
-                savedPlayer1Character = player1Character; // Guardar para siguientes juegos
-                document.getElementById("p1Name").textContent = character ? character.toUpperCase() : "NINGUNO";
-                document.getElementById("p1NameScore").textContent = character || "PLAYER 1";
-
-                // Actualizar icono del display
-                const displayIcon = document.getElementById("p1DisplayIcon");
-                if (character && stockIcons[character]) {
-                    displayIcon.src = stockIcons[character];
-                    displayIcon.style.display = 'block';
-                } else {
-                    displayIcon.style.display = 'none';
-                }
-            } else {
-                player2Character = character || null;
-                savedPlayer2Character = player2Character; // Guardar para siguientes juegos
-                document.getElementById("p2Name").textContent = character ? character.toUpperCase() : "NINGUNO";
-                document.getElementById("p2NameScore").textContent = character || "PLAYER 2";
-
-                // Actualizar icono del display
-                const displayIcon = document.getElementById("p2DisplayIcon");
-                if (character && stockIcons[character]) {
-                    displayIcon.src = stockIcons[character];
-                    displayIcon.style.display = 'block';
-                } else {
-                    displayIcon.style.display = 'none';
-                }
-            }
+    if (character) {
+        buttonText.textContent = character;
+        if (stockIcons[character]) {
+            buttonIcon.src = stockIcons[character];
+            buttonIcon.style.display = 'block';
+            buttonIcon.style.background = 'transparent';
+        } else {
+            buttonIcon.style.display = 'none';
         }
+    } else {
+        buttonText.textContent = 'SELECCIONAR PERSONAJE';
+        buttonIcon.style.display = 'none';
+    }
+
+    // Actualizar personaje y guardarlo
+    if (playerNum === 1) {
+        player1Character = character || null;
+        savedPlayer1Character = player1Character;
+        document.getElementById("p1Name").textContent = character ? character.toUpperCase() : "NINGUNO";
+        updatePlayerScoreDisplay(1);
+
+        // Actualizar icono del display
+        const displayIcon = document.getElementById("p1DisplayIcon");
+        if (character && stockIcons[character]) {
+            displayIcon.src = stockIcons[character];
+            displayIcon.style.display = 'block';
+            displayIcon.style.background = 'transparent';
+        } else {
+            displayIcon.style.display = 'none';
+        }
+    } else {
+        player2Character = character || null;
+        savedPlayer2Character = player2Character;
+        document.getElementById("p2Name").textContent = character ? character.toUpperCase() : "NINGUNO";
+        updatePlayerScoreDisplay(2);
+
+        // Actualizar icono del display
+        const displayIcon = document.getElementById("p2DisplayIcon");
+        if (character && stockIcons[character]) {
+            displayIcon.src = stockIcons[character];
+            displayIcon.style.display = 'block';
+            displayIcon.style.background = 'transparent';
+        } else {
+            displayIcon.style.display = 'none';
+        }
+    }
+}
+function updatePlayerScoreDisplay(playerNum) {
+    const nameElement = document.getElementById(`p${playerNum}NameScore`);
+    const character = playerNum === 1 ? player1Character : player2Character;
+    
+    if (character) {
+        const iconPath = stockIcons[character] || '';
+        const iconHtml = iconPath ? `<img src="${iconPath}" onerror="this.style.display='none'" style="background: transparent; width: 28px; height: 28px; object-fit: contain; border-radius: 4px; padding: 2px;" alt="">` : '';
+        nameElement.innerHTML = `${iconHtml} ${character}`;
+    } else {
+        nameElement.textContent = `PLAYER ${playerNum}`;
+    }
+}
 
         // ==================== FUNCIÓN PARA CARGAR PERSONAJES GUARDADOS ====================
-        function loadSavedCharacters() {
-            if (savedPlayer1Character) {
-                player1Character = savedPlayer1Character;
-                document.getElementById("p1-select-text").textContent = savedPlayer1Character;
-                document.getElementById("p1Name").textContent = savedPlayer1Character.toUpperCase();
-                document.getElementById("p1NameScore").textContent = savedPlayer1Character;
+function loadSavedCharacters() {
+    if (savedPlayer1Character) {
+        player1Character = savedPlayer1Character;
+        document.getElementById("p1-select-text").textContent = savedPlayer1Character;
+        document.getElementById("p1Name").textContent = savedPlayer1Character.toUpperCase();
+        updatePlayerScoreDisplay(1);
 
-                if (stockIcons[savedPlayer1Character]) {
-                    document.getElementById("p1-select-icon").src = stockIcons[savedPlayer1Character];
-                    document.getElementById("p1-select-icon").style.display = 'block';
-                    document.getElementById("p1DisplayIcon").src = stockIcons[savedPlayer1Character];
-                    document.getElementById("p1DisplayIcon").style.display = 'block';
-                }
-            }
-
-            if (savedPlayer2Character) {
-                player2Character = savedPlayer2Character;
-                document.getElementById("p2-select-text").textContent = savedPlayer2Character;
-                document.getElementById("p2Name").textContent = savedPlayer2Character.toUpperCase();
-                document.getElementById("p2NameScore").textContent = savedPlayer2Character;
-
-                if (stockIcons[savedPlayer2Character]) {
-                    document.getElementById("p2-select-icon").src = stockIcons[savedPlayer2Character];
-                    document.getElementById("p2-select-icon").style.display = 'block';
-                    document.getElementById("p2DisplayIcon").src = stockIcons[savedPlayer2Character];
-                    document.getElementById("p2DisplayIcon").style.display = 'block';
-                }
-            }
-
-            // Recrear selects para actualizar las clases 'selected'
-            createCustomSelect(1);
-            createCustomSelect(2);
+        if (stockIcons[savedPlayer1Character]) {
+            document.getElementById("p1-select-icon").src = stockIcons[savedPlayer1Character];
+            document.getElementById("p1-select-icon").style.display = 'block';
+            document.getElementById("p1-select-icon").style.background = 'transparent';
+            document.getElementById("p1DisplayIcon").src = stockIcons[savedPlayer1Character];
+            document.getElementById("p1DisplayIcon").style.display = 'block';
+            document.getElementById("p1DisplayIcon").style.background = 'transparent';
         }
+    }
+
+    if (savedPlayer2Character) {
+        player2Character = savedPlayer2Character;
+        document.getElementById("p2-select-text").textContent = savedPlayer2Character;
+        document.getElementById("p2Name").textContent = savedPlayer2Character.toUpperCase();
+        updatePlayerScoreDisplay(2);
+
+        if (stockIcons[savedPlayer2Character]) {
+            document.getElementById("p2-select-icon").src = stockIcons[savedPlayer2Character];
+            document.getElementById("p2-select-icon").style.display = 'block';
+            document.getElementById("p2-select-icon").style.background = 'transparent';
+            document.getElementById("p2DisplayIcon").src = stockIcons[savedPlayer2Character];
+            document.getElementById("p2DisplayIcon").style.display = 'block';
+            document.getElementById("p2DisplayIcon").style.background = 'transparent';
+        }
+    }
+
+    // Recrear selects para actualizar las clases 'selected'
+    createCustomSelect(1);
+    createCustomSelect(2);
+}
 
         // ==================== FUNCIONES DE GANADOR ====================
         function updateWinnerDisplay() {
@@ -1299,6 +1347,7 @@ header h1 {
                 pendingPick = null;
 
                 renderStages();
+                updateStageDisplay(null);
 
                 document.getElementById("stagesContainer").style.display = "block";
                 document.getElementById("gameInfo").style.display = "block";
@@ -1323,6 +1372,7 @@ header h1 {
             pendingPick = null;
 
             renderStages();
+            updateStageDisplay(null);
 
             document.getElementById("stagesContainer").style.display = "block";
             document.getElementById("gameInfo").style.display = "block";
@@ -1473,6 +1523,7 @@ header h1 {
                         document.getElementById("gameButtons").style.display = "flex";
                         document.getElementById("stagesContainer").style.display = "none";
                         document.getElementById("phaseIndicator").innerText = "REGISTRAR GANADOR";
+                        updateStageDisplay(selectedStage);
                     } else {
                         alert("SELECCIONA 1 STAGE");
                     }
@@ -1508,6 +1559,7 @@ header h1 {
                         document.getElementById("gameButtons").style.display = "flex";
                         document.getElementById("stagesContainer").style.display = "none";
                         document.getElementById("phaseIndicator").innerText = "REGISTRAR GANADOR";
+                        updateStageDisplay(selectedStage);
                     } else {
                         alert("SELECCIONA 1 STAGE");
                     }
@@ -1539,6 +1591,7 @@ header h1 {
             document.getElementById("phaseIndicator").innerText = `GANADOR: ${winningPlayer}`;
 
             checkSetWinner();
+            updateStageDisplay(null);
         }
 
         function checkSetWinner() {
@@ -1571,7 +1624,7 @@ header h1 {
         }
         function resetSet() {
             if (confirm("¿REINICIAR EL SET COMPLETO? SE PERDERÁ EL HISTORIAL.")) {
-                resetAll(); // Llama al mismo reset que el botón fijo
+                resetAll();
             }
         }
 
@@ -1605,13 +1658,49 @@ header h1 {
             matchHistory.forEach(match => {
                 const div = document.createElement("div");
                 div.className = "match-item";
+                
+                let winnerIcon = '';
+                let stageIcon = '';
+                
+                if (match.winner === "Player 1" && player1Character) {
+                    const iconPath = stockIcons[player1Character] || '';
+                    winnerIcon = iconPath ? `<img src="${iconPath}" onerror="this.style.display='none'" style="background: transparent; width: 20px; height: 20px; object-fit: contain; border-radius: 3px;" alt="">` : '';
+                } else if (match.winner === "Player 2" && player2Character) {
+                    const iconPath = stockIcons[player2Character] || '';
+                    winnerIcon = iconPath ? `<img src="${iconPath}" onerror="this.style.display='none'" style="background: transparent; width: 20px; height: 20px; object-fit: contain; border-radius: 3px;" alt="">` : '';
+                }
+                
+                const stageData = allStages.find(s => s.name === match.stage);
+                if (stageData) {
+                    stageIcon = `<img src="${stageData.img}" onerror="this.style.display='none'" style="width: 24px; height: 24px; object-fit: cover; border-radius: 3px; border: 1px solid #444;" alt="">`;
+                }
+                
                 div.innerHTML = `
                     <span>JUEGO ${match.game}</span>
-                    <span class="match-winner">${match.winner === "Player 1" ? "P1" : "P2"}</span>
-                    <span>${match.stage}</span>
+                    <span class="match-winner">${winnerIcon} ${match.winner === "Player 1" ? "P1" : "P2"}</span>
+                    <span class="match-stage">${stageIcon} ${match.stage}</span>
                 `;
                 historyList.appendChild(div);
             });
+        }
+
+        // ===== FUNCIÓN UPDATE STAGE DISPLAY (AHORA EN LA POSICIÓN CORRECTA) =====
+        function updateStageDisplay(stageName) {
+            const display = document.getElementById("stageDisplay");
+            const icon = document.getElementById("stageDisplayIcon");
+            const name = document.getElementById("stageDisplayName");
+
+            if (stageName) {
+                const stageData = allStages.find(s => s.name === stageName);
+                if (stageData) {
+                    icon.src = stageData.img;
+                    icon.style.display = 'block';
+                    name.textContent = stageName;
+                    display.classList.remove('hidden');
+                }
+            } else {
+                display.classList.add('hidden');
+            }
         }
 
         function resetAll() {
@@ -1646,6 +1735,7 @@ header h1 {
             document.getElementById("characterSection").classList.remove("hidden");
             document.getElementById("gameSection").classList.add("hidden");
             document.getElementById("winnerDisplay").classList.add("hidden");
+            document.getElementById("stageDisplay").classList.add("hidden");
 
             document.getElementById("p1Name").textContent = "NINGUNO";
             document.getElementById("p2Name").textContent = "NINGUNO";
