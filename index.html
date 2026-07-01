@@ -1584,7 +1584,11 @@
             }
         }
 
+        // ==================== FUNCIÓN RECORD WIN MODIFICADA ====================
         function recordWin(winningPlayer) {
+            // Guardar el personaje del ganador en el momento de la partida
+            let winnerCharacter = winningPlayer === "Player 1" ? player1Character : player2Character;
+
             if (winningPlayer === "Player 1") {
                 player1Score++;
                 lastGameWinner = "Player 1";
@@ -1593,9 +1597,11 @@
                 lastGameWinner = "Player 2";
             }
 
+            // Guardar en el historial con el personaje en ese momento
             matchHistory.push({
                 game: currentGame,
                 winner: winningPlayer,
+                winnerCharacter: winnerCharacter,  // <-- GUARDAMOS EL PERSONAJE
                 stage: selectedStage
             });
 
@@ -1611,6 +1617,49 @@
             updateStageDisplay(null);
         }
 
+        // ==================== FUNCIÓN UPDATE MATCH HISTORY MODIFICADA ====================
+        function updateMatchHistory() {
+            const historyList = document.getElementById("historyList");
+            historyList.innerHTML = "";
+            matchHistory.forEach(match => {
+                const div = document.createElement("div");
+                div.className = "match-item";
+
+                let winnerIcon = '';
+                let stageIcon = '';
+
+                // USAMOS EL PERSONAJE GUARDADO EN EL HISTORIAL
+                if (match.winnerCharacter) {
+                    const iconPath = stockIcons[match.winnerCharacter] || '';
+                    winnerIcon = iconPath ? `<img src="${iconPath}" onerror="this.style.display='none'" style="background: transparent; width: 20px; height: 20px; object-fit: contain; border-radius: 3px;" alt="">` : '';
+                }
+
+                // Si no hay personaje guardado (por compatibilidad), intentamos con los actuales
+                if (!winnerIcon) {
+                    if (match.winner === "Player 1" && player1Character) {
+                        const iconPath = stockIcons[player1Character] || '';
+                        winnerIcon = iconPath ? `<img src="${iconPath}" onerror="this.style.display='none'" style="background: transparent; width: 20px; height: 20px; object-fit: contain; border-radius: 3px;" alt="">` : '';
+                    } else if (match.winner === "Player 2" && player2Character) {
+                        const iconPath = stockIcons[player2Character] || '';
+                        winnerIcon = iconPath ? `<img src="${iconPath}" onerror="this.style.display='none'" style="background: transparent; width: 20px; height: 20px; object-fit: contain; border-radius: 3px;" alt="">` : '';
+                    }
+                }
+
+                const stageData = allStages.find(s => s.name === match.stage);
+                if (stageData) {
+                    stageIcon = `<img src="${stageData.img}" onerror="this.style.display='none'" style="width: 24px; height: 24px; object-fit: cover; border-radius: 3px; border: 1px solid #444;" alt="">`;
+                }
+
+                div.innerHTML = `
+                    <span>JUEGO ${match.game}</span>
+                    <span class="match-winner">${winnerIcon} ${match.winner === "Player 1" ? "P1" : "P2"}</span>
+                    <span class="match-stage">${stageIcon} ${match.stage}</span>
+                `;
+                historyList.appendChild(div);
+            });
+        }
+
+        // ==================== RESTO DE FUNCIONES (sin cambios) ====================
         function checkSetWinner() {
             const resetSetBtn = document.getElementById("resetSetBtn");
             const nextGameBtn = document.getElementById("nextGameBtn");
@@ -1666,39 +1715,6 @@
             document.getElementById("p2Score").textContent = player2Score;
         }
 
-        function updateMatchHistory() {
-            const historyList = document.getElementById("historyList");
-            historyList.innerHTML = "";
-            matchHistory.forEach(match => {
-                const div = document.createElement("div");
-                div.className = "match-item";
-
-                let winnerIcon = '';
-                let stageIcon = '';
-
-                if (match.winner === "Player 1" && player1Character) {
-                    const iconPath = stockIcons[player1Character] || '';
-                    winnerIcon = iconPath ? `<img src="${iconPath}" onerror="this.style.display='none'" style="background: transparent; width: 20px; height: 20px; object-fit: contain; border-radius: 3px;" alt="">` : '';
-                } else if (match.winner === "Player 2" && player2Character) {
-                    const iconPath = stockIcons[player2Character] || '';
-                    winnerIcon = iconPath ? `<img src="${iconPath}" onerror="this.style.display='none'" style="background: transparent; width: 20px; height: 20px; object-fit: contain; border-radius: 3px;" alt="">` : '';
-                }
-
-                const stageData = allStages.find(s => s.name === match.stage);
-                if (stageData) {
-                    stageIcon = `<img src="${stageData.img}" onerror="this.style.display='none'" style="width: 24px; height: 24px; object-fit: cover; border-radius: 3px; border: 1px solid #444;" alt="">`;
-                }
-
-                div.innerHTML = `
-                    <span>JUEGO ${match.game}</span>
-                    <span class="match-winner">${winnerIcon} ${match.winner === "Player 1" ? "P1" : "P2"}</span>
-                    <span class="match-stage">${stageIcon} ${match.stage}</span>
-                `;
-                historyList.appendChild(div);
-            });
-        }
-
-        // ===== FUNCIÓN UPDATE STAGE DISPLAY =====
         function updateStageDisplay(stageName) {
             const display = document.getElementById("stageDisplay");
             const icon = document.getElementById("stageDisplayIcon");
